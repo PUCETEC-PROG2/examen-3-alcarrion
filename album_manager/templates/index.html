@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Discos de Música{% endblock title %}
+{% block content %}
+    <p class="p-2">Álbums:</p>
+    <div class="card-group">
+        {% for album in albums %}
+            <div class="card">
+                <img src="{{album.picture.url}}" alt="">
+                <div class="card-body">
+                    <h5 class="card.title">{{ album }}</h5>
+                    <p class="class-text">Artista: {{ album.artist }}</p>
+                    <p class="class-text">Género: {{ album.genre }}</p>
+                
+                    <a href="album/{{ album.id }}" class="btn btn-primary">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <a href="edit_album/{{ album.id }}" class="btn btn-primary">
+                        <i class="fa-solid fa-pencil"></i>
+                    </a>
+                    <a href="delete_album/{{ album.id }}" class="btn btn-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}    
+    </div>
+{% endblock content %}

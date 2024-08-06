@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ album.title }}{% endblock title %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ album.title }}</h2>
+    <p>Seleccionaste: <strong>{{ album.title | capfirst }}</strong></p>
+    <h3>Información:</h3>
+    <ul>
+        <li>Año de lanzamiento: {{ album.release_year }}.</li>
+        <li>Género: {{ album.genre }}.</li>
+        {% if album.artist %}
+            <li>Artista: <a href="{% url 'album_manager:artist_detail' artist_id=album.artist.id %}">{{ album.artist.name }}</a></li>
+        {% else %}
+            <li>Artista: No asignado</li>
+        {% endif %}
+    </ul>
+    <a class="btn btn-primary" href="/">Regresar</a>
+</div>
+{% endblock content %}

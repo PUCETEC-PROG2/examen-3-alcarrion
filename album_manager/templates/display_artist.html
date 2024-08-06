@@ -1,0 +1,16 @@
+{% extends 'album_manager/base.html' %}
+
+{% block title %}Detalles del Artista{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ artist.name }}</h2>
+    <p>País: {{ artist.country }}</p>
+    <a class="btn btn-secondary" href="{% url 'album_manager:edit_artist' id=artist.id %}">Editar</a>
+    <form method="post" action="{% url 'album_manager:delete_artist' id=artist.id %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </form>
+</div>
+{% endblock %}
+
